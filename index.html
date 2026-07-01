@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===================== SEO / META ===================== -->
+  <title>VocabKit | Vocabulary that keeps up with you</title>
+  <meta name="description" content="VocabKit is an AI-powered vocabulary app for people who already understand English, but need the right word at the right moment. Join the waitlist." />
+  <link rel="canonical" href="https://vocabkit.ca/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vocabkit.ca/" />
+  <meta property="og:title" content="VocabKit | Vocabulary that keeps up with you" />
+  <meta property="og:description" content="You already think in complex ideas. VocabKit helps your vocabulary catch up. Join the waitlist." />
+  <meta property="og:site_name" content="VocabKit" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VocabKit | Vocabulary that keeps up with you" />
+  <meta name="twitter:description" content="You already think in complex ideas. VocabKit helps your vocabulary catch up. Join the waitlist." />
+
+  <link rel="icon" href="assets/vocabkit-logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- LaunchList waitlist widget (same project as watermelonkode.com) -->
+  <script src="https://getlaunchlist.com/js/widget.js" defer></script>
+
+  <style>
+    :root {
+      --bg: #0F0F0F;
+      --bg-elev: #151515;
+      --bg-card: #1A1A1A;
+      --border: #262626;
+      --border-soft: #1E1E1E;
+
+      --text: #F0EDE8;
+      --text-dim: #A6A29D;
+      --text-faint: #6C6964;
+
+      /* VocabKit violet system, matches the app's design tokens */
+      --violet: #7C6AFF;
+      --violet-light: #A594FF;
+      --violet-deep: #6A58F0;
+      --success: #1D9E75;
+
+      --maxw: 1080px;
+      --font: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: rgba(124,106,255,0.30); color: #fff; }
+    :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 4px; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ===================== TOP BAR ===================== */
+    .topbar {
+      background: var(--bg-elev);
+      border-bottom: 1px solid var(--border-soft);
+      text-align: center;
+      padding: 8px 0;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+    }
+    .topbar a { color: var(--text-dim); font-weight: 600; transition: color .2s ease; }
+    .topbar a:hover { color: var(--violet-light); }
+    .topbar img { width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 5px; }
+
+    /* ===================== NAV ===================== */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(15,15,15,0.72);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.0625rem; letter-spacing: -0.01em; }
+    .brand img { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; }
+
+    .nav-cta {
+      font-size: 0.875rem; font-weight: 700;
+      padding: 10px 20px; border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--violet-deep), var(--violet-light));
+      box-shadow: 0 6px 20px -8px rgba(124,106,255,0.55);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 26px -8px rgba(124,106,255,0.7); }
+
+    /* ===================== HERO ===================== */
+    .hero { position: relative; padding: 108px 0 96px; overflow: hidden; }
+    .glow {
+      position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px; pointer-events: none; z-index: 0;
+      background: radial-gradient(closest-side, rgba(124,106,255,0.30), rgba(124,106,255,0) 70%);
+      filter: blur(20px);
+    }
+    .hero .wrap { position: relative; z-index: 1; text-align: center; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--violet-light);
+      padding: 6px 14px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(124,106,255,0.06);
+    }
+    .eyebrow .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--violet-light); box-shadow: 0 0 8px rgba(165,148,255,0.8); }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.06; letter-spacing: -0.035em;
+      margin: 26px auto 0; max-width: 18ch;
+    }
+    h1 .hl { color: var(--violet-light); }
+
+    .sub { margin: 24px auto 0; max-width: 58ch; font-size: clamp(1.0625rem, 2.2vw, 1.25rem); color: var(--text-dim); line-height: 1.6; }
+
+    .hero-actions { margin-top: 38px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.9375rem; font-weight: 700;
+      padding: 15px 28px; border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--violet-deep), var(--violet-light));
+      box-shadow: 0 8px 30px -8px rgba(124,106,255,0.55);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px -8px rgba(124,106,255,0.7); }
+    .btn-primary svg { transition: transform .2s ease; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      font-size: 0.9375rem; font-weight: 600;
+      padding: 15px 24px; border-radius: 999px;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text-faint); }
+
+    /* ===================== PRODUCT ===================== */
+    .product { padding: 30px 0 90px; }
+    .panel {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(124,106,255,0.05), rgba(124,106,255,0) 40%), var(--bg-elev);
+      border-radius: 28px;
+      padding: clamp(32px, 5vw, 64px);
+    }
+    .kicker { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); }
+    .panel h2 { margin-top: 14px; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; max-width: 20ch; }
+
+    .features { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .feature { padding-top: 22px; border-top: 1px solid var(--border); }
+    .feature h3 { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+    .feature h3 .dot { width: 8px; height: 8px; border-radius: 3px; background: linear-gradient(160deg, var(--violet-light), var(--violet-deep)); flex-shrink: 0; }
+    .feature p { margin-top: 10px; font-size: 0.9375rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* ===================== VOICES (persona quotes) ===================== */
+    .voices { padding: 0 0 96px; }
+    .voices-head { text-align: center; max-width: 46ch; margin: 0 auto 40px; }
+    .voices-head h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; }
+    .voices-head p { margin-top: 14px; color: var(--text-dim); font-size: 1.0625rem; }
+
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .voice-card {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .voice-mark { width: 32px; height: 24px; opacity: 0.5; }
+    .voice-quote { margin-top: 18px; font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.5; color: var(--text); }
+    .voice-tag { margin-top: 18px; font-size: 0.8125rem; color: var(--text-faint); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ===================== WAITLIST ===================== */
+    .waitlist { padding: 10px 0 110px; }
+    .waitlist .wrap { text-align: center; }
+    .waitlist h2 { font-size: clamp(2rem, 4.6vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+    .waitlist .sub { margin-top: 18px; }
+    .signup { margin: 36px auto 0; max-width: 480px; }
+    .reassure { margin-top: 16px; font-size: 0.8125rem; color: var(--text-faint); display: flex; align-items: center; justify-content: center; gap: 7px; }
+    .dot-live { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px rgba(29,158,117,0.7); }
+
+    /* ===================== FOOTER ===================== */
+    footer { border-top: 1px solid var(--border-soft); padding: 44px 0; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .foot-left { display: flex; flex-direction: column; gap: 10px; }
+    .built-by { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text-faint); }
+    .built-by img { width: 18px; height: 18px; border-radius: 5px; }
+    .built-by a { color: var(--text-dim); font-weight: 600; transition: color .2s ease; }
+    .built-by a:hover { color: var(--text); }
+    .foot-meta { font-size: 0.8125rem; color: var(--text-faint); }
+    .foot-meta a { color: var(--text-dim); }
+    .foot-meta a:hover { color: var(--text); }
+    .socials { display: flex; gap: 22px; font-size: 0.875rem; }
+    .socials a { color: var(--text-dim); transition: color .2s ease; }
+    .socials a:hover { color: var(--text); }
+
+    /* ===================== MOTION ===================== */
+    .reveal { opacity: 0; transform: translateY(18px); }
+    .in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    .hero .eyebrow { animation: rise .7s ease both .05s; }
+    .hero h1 { animation: rise .8s ease both .15s; }
+    .hero .sub { animation: rise .8s ease both .28s; }
+    .hero .hero-actions { animation: rise .8s ease both .4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 80px 0 60px; }
+      .features { grid-template-columns: 1fr; gap: 0; }
+      .feature { padding: 22px 0; border-top: 1px solid var(--border); }
+      .feature:first-child { padding-top: 6px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .foot-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== TOP BAR: watermelonKode attribution ===================== -->
+  <div class="topbar">
+    <a href="https://www.watermelonkode.com" target="_blank" rel="noopener">
+      <img src="assets/watermelonkode-logo.png" alt="" aria-hidden="true" />A watermelonKode product
+    </a>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="VocabKit home">
+        <img src="assets/vocabkit-logo.png" alt="" aria-hidden="true" />
+        <span>VocabKit</span>
+      </a>
+      <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="top">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>Coming August 2026</span>
+      <h1>You're not struggling because you're not smart enough. <span class="hl">Your vocabulary just hasn't caught up.</span></h1>
+      <p class="sub">VocabKit shows you the words you already half-know, right where you'll actually use them: in a real sentence, a real moment, a real conversation. Built for people who understand a language but want it to finally sound like them.</p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">
+          Join the waitlist
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#product" class="btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PRODUCT ===================== -->
+  <section class="product" id="product">
+    <div class="wrap">
+      <div class="panel reveal">
+        <div class="kicker">How VocabKit works</div>
+        <h2>Words that live in your life, not in a dictionary.</h2>
+
+        <div class="features">
+          <div class="feature">
+            <h3><span class="dot" aria-hidden="true"></span>Real context, every time</h3>
+            <p>Every word arrives inside a sentence you would actually hear or say. Never a definition floating on its own with nothing to hold onto.</p>
+          </div>
+          <div class="feature">
+            <h3><span class="dot" aria-hidden="true"></span>Built for B1 to C2</h3>
+            <p>For people who already understand the language and just want the right word ready the moment they need it, not a beginner's course.</p>
+          </div>
+          <div class="feature">
+            <h3><span class="dot" aria-hidden="true"></span>English and French</h3>
+            <p>Launching with both, so you can build the vocabulary that actually matters for your studies, your work, and your life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VOICES ===================== -->
+  <section class="voices">
+    <div class="wrap">
+      <div class="voices-head reveal">
+        <h2>Built for two kinds of ambition.</h2>
+        <p>You don't need to be one or the other. Most people are a bit of both.</p>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-card reveal">
+          <svg class="voice-mark" viewBox="0 0 32 24" fill="none" aria-hidden="true"><path d="M0 12C0 5.373 5.373 0 12 0v6a6 6 0 00-6 6h6v12H0V12zm18 0C18 5.373 23.373 0 30 0v6a6 6 0 00-6 6h6v12H18V12z" fill="#7C6AFF"/></svg>
+          <p class="voice-quote">"I know more English than I sound like I do. I just need the right words at the right moment."</p>
+          <p class="voice-tag">Studying, working, living in a second language</p>
+        </div>
+        <div class="voice-card reveal">
+          <svg class="voice-mark" viewBox="0 0 32 24" fill="none" aria-hidden="true"><path d="M0 12C0 5.373 5.373 0 12 0v6a6 6 0 00-6 6h6v12H0V12zm18 0C18 5.373 23.373 0 30 0v6a6 6 0 00-6 6h6v12H18V12z" fill="#7C6AFF"/></svg>
+          <p class="voice-quote">"My ideas are strong. I just want my English to match them."</p>
+          <p class="voice-tag">Building a career in a second language</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WAITLIST ===================== -->
+  <section class="waitlist" id="waitlist">
+    <div class="wrap">
+      <h2 class="reveal">Be first to try VocabKit.</h2>
+      <p class="sub reveal">Join the waitlist and we will send one email the day it launches. That is the only reason we will reach out.</p>
+
+      <div class="signup reveal">
+        <div class="launchlist-widget" data-key-id="xyvune" data-height="180px"></div>
+        <p class="reassure"><span class="dot-live" aria-hidden="true"></span> No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap foot-inner">
+      <div class="foot-left">
+        <div class="built-by">
+          <img src="assets/watermelonkode-logo.png" alt="" aria-hidden="true" />
+          Designed and built by <a href="https://www.watermelonkode.com" target="_blank" rel="noopener">watermelonKode</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:info@vocabkit.ca">info@vocabkit.ca</a></div>
+        <div class="foot-meta">&copy; 2026 VocabKit, a watermelonKode product.</div>
+      </div>
+      <nav class="socials" aria-label="Social media">
+        <a href="#" rel="noopener">Instagram</a>
+        <a href="#" rel="noopener">TikTok</a>
+        <a href="#" rel="noopener">Threads</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      els.forEach(el => io.observe(el));
+    } else {
+      els.forEach(el => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
